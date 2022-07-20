@@ -53,6 +53,7 @@ class Car{
         
             if (this.controls.left){
                 this.angle += this.turningAngle * flip;
+                console.log(this.angle);
             }
             if (this.controls.right){
                 this.angle -= this.turningAngle * flip;
