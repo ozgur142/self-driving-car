@@ -14,11 +14,14 @@ class Car{
         this.angle = 0;
         this.turningAngle = 0.03;
 
+        this.sensor = new Sensor(this);
         this.controls = new Controls();
     }
 
-    update() {
+    update(roadBorders) {
         this.#move();
+        
+        this.sensor.update(roadBorders);
     }
 
     #move() {
@@ -53,7 +56,7 @@ class Car{
         
             if (this.controls.left){
                 this.angle += this.turningAngle * flip;
-                console.log(this.angle);
+                console.log(this.angle); 
             }
             if (this.controls.right){
                 this.angle -= this.turningAngle * flip;
@@ -79,5 +82,7 @@ class Car{
         ctx.fill();
 
         ctx.restore();
+
+        this.sensor.draw(ctx);
     }
 }
