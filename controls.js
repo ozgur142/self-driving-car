@@ -1,27 +1,20 @@
 class Controls{
-    constructor(){
+    constructor(type){
         this.forward = false;
         this.left = false;
         this.right = false;
         this.reverse = false;
 
-        this.#addKeyBoardListeners();
+        switch(type){
+            case "KEYS":
+                this.#addKeyBoardListeners();
+                break;
+            case "DUMMY":
+                this.forward = true;
+                break;
+        }
     }
 
-    update() {
-        if (this.controls.forward){
-            this.y -= 2;
-        }
-        if (this.controls.reverse){
-            this.y += 2;
-        }
-        if (this.controls.right){
-            this.x += 2;
-        }
-        if (this.controls.left){
-            this.x -= 2;
-        }
-    }
 
     #addKeyBoardListeners(){
         document.onkeydown=(event)=>{
